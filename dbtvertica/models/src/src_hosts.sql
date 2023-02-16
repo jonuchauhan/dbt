@@ -2,7 +2,7 @@ with raw_hosts as (
 select
 	*
 from
-	dev.raw_hosts )
+	{{ source('airbnb', 'hosts') }})
 select
 	id as host_id,
 	name as host_name,
