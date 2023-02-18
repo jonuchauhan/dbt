@@ -6,19 +6,26 @@ sources:
     tables:
       - name: listings
         identifier: raw_listings
+        columns:
+          - name: id
+           
       
       - name: hosts
         identifier: raw_hosts
 
       - name: reviews
         identifier: raw_reviews
+        loaded_at_field: date
         freshness:
-          warn_after:
-            count: 1
-            period: hour
-          error_after:
-            count: 24
-            period: hour
-          
-        loaded_at_field: "date"
+          warn_after: {count: 1, period: hour}
+          error_after: {count: 24, period: hour}
+               
        
+  - name: dim
+    schema: TEST
+    tables:
+      - name: dim_listings
+        identifier: dim_listings_cleansed
+        columns:
+           - name: listing_id
+             
