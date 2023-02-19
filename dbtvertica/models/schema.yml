@@ -10,6 +10,7 @@ models:
           - unique
           - not_null
       - name: host_id
+        description: host_id refrence to dim_host_cleansed
         tests:
           - not_null
           - relationships:
@@ -23,6 +24,16 @@ models:
                         'Shared room',
                         'Hotel room' ]
       - name: minimum_nights
+        description: '{{ doc("dim_listing_cleansed__minimum_nights")}}'
         tests:
           - positive_value_check
+             
 
+
+  - name: dim_hosts_cleansed
+    columns:
+          - name: host_id 
+            tests:
+              - dbt_expectations.expect_column_to_exist
+             
+         
